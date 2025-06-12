@@ -6,7 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Speak Up Landing</title>
   <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;700&family=Varela+Round&display=swap" rel="stylesheet">
+  <!-- AOS CSS for scroll animations -->
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+    html {
+      scroll-behavior: smooth;
+    }
     body, html {
       height: 100%;
       margin: 0;
@@ -1091,28 +1096,15 @@
         padding: 12px 8px 8px 8px;
       }
     }
+    /* Optional: AOS custom tweaks for smoother appearance */
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
     /* ...existing code... */
-    .faq-answer {
-      display: none;
-      /* ...existing code... */
-    }
-    .faq-answer.active {
-      display: block;
-    }
-    .faq-item.open .faq-icon {
-      background: #4f8cff;
-      color: #fff;
-      border-color: #4f8cff;
-      transform: rotate(45deg);
-      transition: background 0.18s, color 0.18s, transform 0.25s;
-    }
-    .faq-item .faq-icon {
-      transition: background 0.18s, color 0.18s, transform 0.25s;
-    }
-    @keyframes faqOpen {
-      from { opacity: 0; transform: translateY(-12px);}
-      to { opacity: 1; transform: translateY(0);}
-    }
   </style>
   <!-- הוסף את זה ל-head שלך (רק פעם אחת!) -->
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
@@ -1122,31 +1114,33 @@
       emailjs.init('JrCuWvCbacKv_fLrW'); // <-- Replace YOUR_USER_ID
     });
   </script>
+  <!-- AOS.js for scroll animations -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 </head>
 <body>
-  <div class="hero">
+  <div class="hero" data-aos="fade-in" data-aos-duration="1200">
     <div class="overlay"></div>
-    <div class="content">
-      <div class="subtitle">SPEAK UP</div>
-      <div class="title">
+    <div class="content" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+      <div class="subtitle" data-aos="fade-down" data-aos-delay="400">SPEAK UP</div>
+      <div class="title" data-aos="fade-up" data-aos-delay="600">
         תא הטלפון החלומי לאירוע שלך
       </div>
-      <div class="desc">
+      <div class="desc" data-aos="fade-up" data-aos-delay="800">
         אהבה, רגשות וברכות - מוקלטים ונשמרים לנצח במזכרת מרגשת
       </div>
-      <div class="buttons">
+      <div class="buttons" data-aos="zoom-in" data-aos-delay="1000">
         <button class="btn primary" onclick="document.querySelector('.pricing-section').scrollIntoView({behavior:'smooth'})">להזמנת תא הטלפון</button>
         <button class="btn secondary" onclick="document.querySelector('.how-it-works').scrollIntoView({behavior:'smooth'})">למידע נוסף</button>
       </div>
     </div>
-    <div class="arrow">&#8595;</div>
+    <div class="arrow" data-aos="fade-up" data-aos-delay="1200">&#8595;</div>
   </div>
-  <div class="how-it-works-bg">
+  <div class="how-it-works-bg" data-aos="fade-right" data-aos-duration="1000">
     <section class="how-it-works">
-      <h2 class="how-title">איך זה עובד?</h2>
-      <p class="how-desc">תהליך קליל ומרגש שיהפוך את האורחים שלכם לחלק בלתי נשכח מהזיכרון.</p>
+      <h2 class="how-title" data-aos="fade-down" data-aos-delay="100">איך זה עובד?</h2>
+      <p class="how-desc" data-aos="fade-up" data-aos-delay="200">תהליך קליל ומרגש שיהפוך את האורחים שלכם לחלק בלתי נשכח מהזיכרון.</p>
       <div class="how-steps">
-        <div class="how-step">
+        <div class="how-step" data-aos="flip-left" data-aos-delay="300">
           <div class="how-step-num">1</div>
           <div class="how-step-icon">
             <!-- Phone SVG Icon -->
@@ -1157,7 +1151,7 @@
             בתוך תא טלפון לונדוני לבן ומעוצב, מחכה להם שפופרת. הם מרימים אותה ומקליטים ברכה אישית – מפתיעה, מרגשת או מצחיקה.
           </div>
         </div>
-        <div class="how-step">
+        <div class="how-step" data-aos="flip-up" data-aos-delay="450">
           <div class="how-step-num">2</div>
           <div class="how-step-icon">
             <!-- Camera SVG Icon -->
@@ -1168,7 +1162,7 @@
             המערכת שלנו מצלמת את הברכה באיכות גבוהה — גם קול, גם וידאו.
           </div>
         </div>
-        <div class="how-step">
+        <div class="how-step" data-aos="flip-right" data-aos-delay="600">
           <div class="how-step-num">3</div>
           <div class="how-step-icon">
             <!-- Film SVG Icon -->
@@ -1182,17 +1176,16 @@
       </div>
     </section>
   </div>
-  <section class="gift-gallery-section">
+  <section class="gift-gallery-section" data-aos="zoom-in-up" data-aos-duration="1000">
     <div class="gift-gallery-content">
-      <h2 class="gift-gallery-title">המתנה המושלמת לזוג</h2>
-      <p class="gift-gallery-desc">
+      <h2 class="gift-gallery-title" data-aos="fade-down" data-aos-delay="100">המתנה המושלמת לזוג</h2>
+      <p class="gift-gallery-desc" data-aos="fade-up" data-aos-delay="200">
         תא הטלפון הלבן המעוצב שלנו הוא חוויה שהאורחים שלך לא ישכחו לעולם
-
       </p>
       <div class="gift-gallery-grid">
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" />
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" />
-        <div class="gift-gallery-video">
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" data-aos="zoom-in" data-aos-delay="300"/>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" data-aos="zoom-in" data-aos-delay="400"/>
+        <div class="gift-gallery-video" data-aos="zoom-in" data-aos-delay="500">
           <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=600&q=80" alt="" class="gift-gallery-img" />
           <button class="gift-gallery-play">
             <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
@@ -1201,31 +1194,30 @@
             </svg>
           </button>
         </div>
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" />
-        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" />
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" data-aos="zoom-in" data-aos-delay="600"/>
+        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="" class="gift-gallery-img" data-aos="zoom-in" data-aos-delay="700"/>
       </div>
     </div>
   </section>
-  <section class="testimonials-section">
-    <h2 class="testimonials-title">מה אומרים עלינו?</h2>
-    <p class="testimonials-subtitle">זוגות שכבר חוו את החוויה המדהימה של תא הטלפון באירוע שלהם</p>
-    <div class="testimonial-card-wrapper">
+  <section class="testimonials-section" data-aos="fade-left" data-aos-duration="1000">
+    <h2 class="testimonials-title" data-aos="fade-down" data-aos-delay="100">מה אומרים עלינו?</h2>
+    <p class="testimonials-subtitle" data-aos="fade-up" data-aos-delay="200">זוגות שכבר חוו את החוויה המדהימה של תא הטלפון באירוע שלהם</p>
+    <div class="testimonial-card-wrapper" data-aos="zoom-in" data-aos-delay="300">
       <button class="testimonial-arrow left" onclick="showTestimonial(-1)" aria-label="הקודם">&#8249;</button>
       <div class="testimonial-card" id="testimonial-card">
         <!-- ביקורת תוצג כאן ע"י JS -->
       </div>
       <button class="testimonial-arrow right" onclick="showTestimonial(1)" aria-label="הבא">&#8250;</button>
     </div>
-    <div class="testimonial-dots" id="testimonial-dots">
+    <div class="testimonial-dots" id="testimonial-dots" data-aos="fade-up" data-aos-delay="400">
       <!-- נקודות JS -->
     </div>
   </section>
-  <section class="pricing-section">
-    <h2 class="pricing-title">בחרו את החבילה המושלמת עבורכם</h2>
-    <p class="pricing-subtitle">חבילות מותאמות שיהפכו את האירוע שלכם לבלתי נשכח</p>
+  <section class="pricing-section" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="pricing-title" data-aos="fade-down" data-aos-delay="100">בחרו את החבילה המושלמת עבורכם</h2>
+    <p class="pricing-subtitle" data-aos="fade-up" data-aos-delay="200">חבילות מותאמות שיהפכו את האירוע שלכם לבלתי נשכח</p>
     <div class="pricing-cards">
-      <!-- בסיסית קודם -->
-      <div class="pricing-card basic">
+      <div class="pricing-card basic" data-aos="flip-up" data-aos-delay="300">
         <div class="pricing-icon" style="background:#4f8cff;">
           <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
         </div>
@@ -1245,7 +1237,7 @@
         </ul>
         <button class="pricing-btn" onclick="selectPackage('חבילה בסיסית')">להזמנה ופרטים</button>
       </div>
-      <div class="pricing-card premium">
+      <div class="pricing-card premium" data-aos="flip-down" data-aos-delay="450">
         <div class="pricing-icon" style="background:#ff4fa2;">
           <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><path fill="#fff" d="M12 2a1 1 0 0 1 .894.553l2.382 4.83 5.33.775a1 1 0 0 1 .554 1.707l-3.856 3.76.911 5.312a1 1 0 0 1-1.451 1.054L12 17.347l-4.764 2.504a1 1 0 0 1-1.451-1.054l.911-5.312-3.856-3.76a1 1 0 0 1 .554-1.707l5.33-.775L11.106 2.553A1 1 0 0 1 12 2Z"/></svg>
         </div>
@@ -1266,50 +1258,49 @@
         <button class="pricing-btn" onclick="selectPackage('חבילה פרימיום')">להזמנה ופרטים</button>
       </div>
     </div>
-    <div class="pricing-note">
+    <div class="pricing-note" data-aos="fade-up" data-aos-delay="600">
       <span>* תיאום מועד סופי בהתאם לזמינות. המחירים כוללים מע"מ.</span>
     </div>
   </section>
-  <section class="faq-section">
-    <h2 class="faq-title">שאלות נפוצות</h2>
-    <p class="faq-subtitle">כל מה שרציתם לדעת על שירות תא הטלפון המעוצב לחתונות</p>
-    <div class="faq-list" id="faq-list">
+  <section class="faq-section" data-aos="fade-up" data-aos-duration="1000">
+    <h2 class="faq-title" data-aos="fade-down" data-aos-delay="100">שאלות נפוצות</h2>
+    <p class="faq-subtitle" data-aos="fade-up" data-aos-delay="200">כל מה שרציתם לדעת על שירות תא הטלפון המעוצב לחתונות</p>
+    <div class="faq-list" id="faq-list" data-aos="zoom-in-up" data-aos-delay="300">
       <div class="faq-item" onclick="toggleFaq(0)">
         <span class="faq-icon">+</span>
         <span class="faq-question">כמה זמן מראש צריך להזמין את שירות תא הטלפון?</span>
       </div>
-      <div class="faq-answer">מומלץ להזמין את השירות לפחות חודשיים מראש כדי להבטיח זמינות בתאריך שלכם.</div>
+      <div class="faq-answer" style="display:none;">מומלץ להזמין את השירות לפחות חודשיים מראש כדי להבטיח זמינות בתאריך שלכם.</div>
       <div class="faq-divider"></div>
       <div class="faq-item" onclick="toggleFaq(1)">
         <span class="faq-icon">+</span>
         <span class="faq-question">כמה זמן לוקח לקבל את הסרטון המוכן?</span>
       </div>
-      <div class="faq-answer">הסרטון עובר עריכה מקצועית ומוכן עד 21 ימי עסקים לאחר האירוע.</div>
+      <div class="faq-answer" style="display:none;">הסרטון עובר עריכה מקצועית ומוכן עד 21 ימי עסקים לאחר האירוע.</div>
       <div class="faq-divider"></div>
       <div class="faq-item" onclick="toggleFaq(2)">
         <span class="faq-icon">+</span>
         <span class="faq-question">האם תא הטלפון דורש חיבור לחשמל?</span>
       </div>
-      <div class="faq-answer">כן, נדרש שקע חשמל סטנדרטי בקרבת מקום להצבת התא.</div>
+      <div class="faq-answer" style="display:none;">כן, נדרש שקע חשמל סטנדרטי בקרבת מקום להצבת התא.</div>
       <div class="faq-divider"></div>
       <div class="faq-item" onclick="toggleFaq(3)">
         <span class="faq-icon">+</span>
         <span class="faq-question">כמה מקום נדרש עבור התא?</span>
       </div>
-      <div class="faq-answer">התא דורש שטח של כ-2x2 מטרים, עדיף במקום מרכזי ונגיש לאורחים.</div>
+      <div class="faq-answer" style="display:none;">התא דורש שטח של כ-2x2 מטרים, עדיף במקום מרכזי ונגיש לאורחים.</div>
       <div class="faq-divider"></div>
       <div class="faq-item" onclick="toggleFaq(4)">
         <span class="faq-icon">+</span>
         <span class="faq-question">האם מגיע צוות מטעמכם לאירוע?</span>
       </div>
-      <div class="faq-answer">בהחלט! צוות מקצועי מלווה את התא ודואג לכל הפרטים במהלך האירוע.</div>
+      <div class="faq-answer" style="display:none;">בהחלט! צוות מקצועי מלווה את התא ודואג לכל הפרטים במהלך האירוע.</div>
       <div class="faq-divider"></div>
     </div>
   </section>
-  <section class="contact-section">
+  <section class="contact-section" data-aos="fade-right" data-aos-duration="1000">
     <div class="contact-container">
-      <!-- השאירו פרטים section removed and replaced below -->
-      <form class="contact-form" id="contact-form">
+      <form class="contact-form" id="contact-form" data-aos="fade-up" data-aos-delay="100">
         <h2 class="contact-form-title">השאירו פרטים</h2>
         <div class="contact-form-row">
           <div class="contact-form-group" style="margin-left:18px;">
@@ -1352,7 +1343,7 @@
           <span class="contact-form-send-icon">&#9993;</span>
         </button>
       </form>
-      <div class="contact-info">
+      <div class="contact-info" data-aos="fade-left" data-aos-delay="300">
         <h2 class="contact-info-title">צרו איתנו קשר</h2>
         <p class="contact-info-desc">
           רוצים לשמוע עוד? יש לכם שאלות? מעוניינים לבדוק תאריכים פנויים?<br>
@@ -1535,7 +1526,7 @@
           </div>
           <div class="testimonial-text">
             "${t.text}"
-          </div>
+                   </div>
           <div class="testimonial-author">
             <span class="testimonial-name">${t.name}</span>
             <span class="testimonial-date">${t.date}</span>
@@ -1590,29 +1581,29 @@
       var list = document.getElementById('faq-list');
       var items = list.querySelectorAll('.faq-item');
       var answers = list.querySelectorAll('.faq-answer');
-      for (let i = 0; i <i < items.length; i++) {
+      for (let i = 0; i < items.length; i++) {
         if (i === idx) {
           const isOpen = items[i].classList.contains('open');
-          // Toggle current
           items[i].classList.toggle('open');
-          answers[i].classList.toggle('active');
+          // Toggle answer display
+          answers[i].style.display = isOpen ? 'none' : 'block';
           // סגור אחרים
           for (let j = 0; j < items.length; j++) {
             if (j !== i) {
               items[j].classList.remove('open');
-              answers[j].classList.remove('active');
+              answers[j].style.display = 'none';
             }
           }
         } else {
           items[i].classList.remove('open');
-          answers[i].classList.remove('active');
+          answers[i].style.display = 'none';
         }
       }
     }
     // הסתרה של כל התשובות בהתחלה
     window.addEventListener('DOMContentLoaded', function() {
       var answers = document.querySelectorAll('.faq-answer');
-      answers.forEach(function(ans) { ans.classList.remove('active'); });
+      answers.forEach(function(ans) { ans.style.display = 'none'; });
       var items = document.querySelectorAll('.faq-item');
       items.forEach(function(item) { item.classList.remove('open'); });
     });
@@ -1673,6 +1664,18 @@
       }
       return val;
     }
+
+    // Init AOS for scroll animations
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init({
+        once: true,
+        duration: 900,
+        offset: 60,
+        easing: 'ease-in-out',
+        // Disable AOS on footer
+        disableMutationObserver: false
+      });
+    });
   </script>
 </body>
 </html>
