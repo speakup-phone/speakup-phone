@@ -1104,6 +1104,286 @@
     [data-aos].aos-animate {
       opacity: 1;
     }
+    /* --- MOBILE ADJUSTMENTS --- */
+    @media (max-width: 700px) {
+      .hero {
+        height: 70vh;
+        min-height: 420px;
+        padding: 0 0 30px 0;
+        background-position: center top;
+      }
+      .content {
+        max-width: 98vw;
+        margin: 0 4vw;
+        padding: 0;
+      }
+      .subtitle {
+        font-size: 1rem;
+        padding: 8px 16px;
+      }
+      .title {
+        font-size: 1.5rem;
+        margin: 18px 0 0 0;
+      }
+      .desc {
+        font-size: 1rem;
+        margin: 18px 0 28px 0;
+      }
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .btn {
+        font-size: 1rem;
+        padding: 10px 18px;
+        width: 100%;
+        min-width: 0;
+      }
+      .arrow {
+        font-size: 2rem;
+        bottom: 12px;
+      }
+      .how-it-works-bg {
+        padding: 0;
+      }
+      .how-it-works {
+        padding: 40px 4vw 30px 4vw;
+      }
+      .how-title {
+        font-size: 1.2rem;
+      }
+      .how-desc {
+        font-size: 1rem;
+        margin-bottom: 32px;
+      }
+      .how-steps {
+        flex-direction: column;
+        gap: 16px;
+      }
+      .how-step {
+        padding: 18px 6px 10px 6px;
+        min-width: 0;
+        max-width: 100vw;
+      }
+      .how-step-num {
+        font-size: 1.5rem;
+        left: 8px;
+        top: 6px;
+      }
+      .how-step-icon {
+        width: 28px;
+        height: 28px;
+        top: 6px;
+        right: 8px;
+      }
+      .how-step-title {
+        font-size: 1rem;
+        margin-top: 32px;
+      }
+      .how-step-desc {
+        font-size: 0.95rem;
+      }
+      .gift-gallery-section {
+        padding: 30px 0 20px 0;
+      }
+      .gift-gallery-title {
+        font-size: 1.1rem;
+      }
+      .gift-gallery-desc {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .gift-gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(5, 100px);
+        gap: 8px;
+        max-width: 98vw;
+      }
+      .gift-gallery-img {
+        border-radius: 8px;
+      }
+      .testimonials-section {
+        padding: 30px 0 40px 0;
+      }
+      .testimonials-title {
+        font-size: 1.2rem;
+      }
+      .testimonials-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .testimonial-card-wrapper {
+        min-height: 180px;
+      }
+      .testimonial-card {
+        padding: 14px 4px 10px 4px;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      .testimonial-stars {
+        font-size: 1.1rem;
+      }
+      .testimonial-text {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .testimonial-arrow {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+      }
+      .pricing-section {
+        padding: 30px 0 20px 0;
+      }
+      .pricing-title {
+        font-size: 1.1rem;
+      }
+      .pricing-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .pricing-cards {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .pricing-card {
+        padding: 14px 4px 10px 4px;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      .pricing-card-title {
+        font-size: 1rem;
+      }
+      .pricing-card-includes {
+        font-size: 0.95rem;
+      }
+      .pricing-card-price {
+        font-size: 1.1rem;
+      }
+      .pricing-features li {
+        font-size: 0.95rem;
+      }
+      .pricing-btn {
+        font-size: 0.98rem;
+        padding: 10px 0;
+      }
+      .pricing-note {
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+      .faq-section {
+        padding: 30px 0 40px 0;
+      }
+      .faq-title {
+        font-size: 1.1rem;
+      }
+      .faq-subtitle {
+        font-size: 0.95rem;
+        margin-bottom: 18px;
+      }
+      .faq-list {
+        max-width: 98vw;
+      }
+      .faq-item {
+        font-size: 0.98rem;
+        padding: 10px 0;
+      }
+      .faq-icon {
+        width: 22px;
+        height: 22px;
+        font-size: 1rem;
+      }
+      .contact-section {
+        padding: 30px 0 0 0;
+        min-height: 0;
+      }
+      .contact-container {
+        flex-direction: column;
+        gap: 18px;
+        max-width: 98vw;
+      }
+      .contact-form, .contact-info {
+        padding: 10px 2vw;
+        min-width: 0;
+        max-width: 98vw;
+      }
+      .contact-form-title, .contact-info-title {
+        font-size: 1.1rem;
+      }
+      .contact-info-desc {
+        font-size: 0.95rem;
+      }
+      .contact-form-row {
+        flex-direction: column;
+        gap: 8px;
+      }
+      .contact-form-group label {
+        font-size: 0.98rem;
+      }
+      .contact-form-group input,
+      .contact-form-group textarea {
+        font-size: 0.98rem;
+        padding: 8px 8px;
+      }
+      .contact-form-submit {
+        font-size: 1rem;
+        padding: 10px 0;
+      }
+      .contact-info-details {
+        margin-bottom: 18px;
+      }
+      .contact-info-item {
+        font-size: 0.98rem;
+        gap: 6px;
+      }
+      .contact-info-label {
+        min-width: 36px;
+        font-size: 0.98rem;
+      }
+      .contact-info-icon {
+        width: 26px;
+        height: 26px;
+        margin-left: 2px;
+      }
+      .contact-info-value {
+        font-size: 0.98rem;
+      }
+      .contact-info-social {
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .contact-social-btn {
+        width: 26px;
+        height: 26px;
+      }
+      .footer-section {
+        padding: 0;
+      }
+      .footer-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+        padding: 18px 4vw 0 4vw;
+      }
+      .footer-brand, .footer-nav {
+        margin-bottom: 6px;
+      }
+      .footer-brand-title {
+        font-size: 1rem;
+      }
+      .footer-brand-desc {
+        font-size: 0.95rem;
+      }
+      .footer-bottom {
+        font-size: 0.85rem;
+        padding: 8px 4vw 8px 4vw;
+      }
+    }
+    /* --- END MOBILE ADJUSTMENTS --- */
     /* ...existing code... */
   </style>
   <!-- הוסף את זה ל-head שלך (רק פעם אחת!) -->
