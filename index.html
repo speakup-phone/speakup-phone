@@ -92,6 +92,33 @@
       background: #000;
       border-color: #000;
       color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .btn.primary::after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 6px;
+      border-radius: 3px 3px 0 0;
+      background: linear-gradient(90deg, #fff 0%, #4f8cff 100%);
+      opacity: 0;
+      transition: opacity 0.18s, top 0.18s;
+      pointer-events: none;
+    }
+    .btn.primary:hover::after,
+    .btn.primary:focus-visible::after {
+      opacity: 1;
+      top: 100%;
+    }
+    .btn.primary:active,
+    .btn.primary:focus:not(:hover) {
+      /* Remove the effect when not hovered */
+      /* No ::after visible */
     }
     .btn.secondary {
       background: transparent;
@@ -768,8 +795,8 @@
     }
     .contact-form-row {
       display: flex;
-      gap: 18px;
-      margin-bottom: 18px;
+      gap: 16px;
+      margin-bottom: 28px;
     }
     .contact-form-group {
       flex: 1;
@@ -777,6 +804,57 @@
       flex-direction: column;
       align-items: flex-start;
       margin-bottom: 0;
+      /* add spacing between fields */
+      margin-right: 0;
+      margin-left: 0;
+      position: relative;
+    }
+    .event-date-wrapper {
+      position: relative;
+      width: 100%;
+      display: flex;
+      align-items: center;
+    }
+    .event-date-input {
+      width: 100%;
+      padding-left: 38px !important; /* space for icon */
+      box-sizing: border-box;
+    }
+    .event-date-calendar {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      width: 22px;
+      height: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      z-index: 2;
+    }
+    .event-date-calendar svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+      pointer-events: none;
+    }
+    .event-date-calendar:focus {
+      outline: none;
+    }
+    @media (max-width: 700px) {
+      .contact-form-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .contact-form-group:not(:last-child) {
+        margin-left: 0;
+      }
     }
     .contact-form-group label {
       font-size: 1rem;
@@ -1234,23 +1312,35 @@
       <form class="contact-form" id="contact-form">
         <h2 class="contact-form-title">השאירו פרטים</h2>
         <div class="contact-form-row">
-          <div class="contact-form-group">
+          <div class="contact-form-group" style="margin-left:18px;">
             <label>שם מלא</label>
             <input type="text" name="user_name" placeholder="השם שלך" required>
           </div>
           <div class="contact-form-group">
             <label>טלפון</label>
-            <input type="tel" name="user_phone" placeholder="הטלפון שלך" required>
+            <input type="tel" name="user_phone" placeholder="הטלפון שלך" required style="direction: rtl; text-align: right;">
           </div>
         </div>
-        <div class="contact-form-row">
-          <div class="contact-form-group">
+        <div class="contact-form-row" style="gap: 16px; margin-bottom: 28px;">
+          <div class="contact-form-group" style="margin-left:18px;">
             <label>אימייל</label>
             <input type="email" name="user_email" placeholder="האימייל שלך" required>
           </div>
           <div class="contact-form-group">
             <label>תאריך האירוע (אם ידוע)</label>
-            <input type="date" name="event_date" placeholder="mm/dd/yyyy">
+            <input
+              type="text"
+              name="event_date"
+              placeholder="DD/MM/YYYY"
+              dir="ltr"
+              style="text-align:left;"
+              pattern="\d{1,2}/\d{1,2}/\d{4}"
+              id="event-date-input"
+              autocomplete="off"
+              onfocus="this.type='date';this.showPicker && this.showPicker();"
+              onblur="if(this.value===''){this.type='text'}else{this.value=formatDateToDDMMYYYY(this.value);this.type='text';}"
+              onclick="this.type='date';this.showPicker && this.showPicker();"
+            >
           </div>
         </div>
         <div class="contact-form-group">
@@ -1285,14 +1375,19 @@
           </div>
         </div>
         <div class="contact-info-social">
-          <a href="#" class="contact-social-btn" aria-label="Facebook">
+          <a href="https://www.facebook.com/profile.php?id=61576313061188" class="contact-social-btn" aria-label="Facebook" target="_blank" rel="noopener">
             <svg width="20" height="20" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H6v4h4v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
           </a>
-          <a href="#" class="contact-social-btn" aria-label="Instagram">
+          <a href="https://www.instagram.com/speakup_phone/" class="contact-social-btn" aria-label="Instagram" target="_blank" rel="noopener">
             <svg width="20" height="20" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.5" y2="6.5"/></svg>
           </a>
-          <a href="#" class="contact-social-btn" aria-label="Telegram">
-            <svg width="20" height="20" fill="none" stroke="#222" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 2L11 13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          <a href="https://www.tiktok.com/@speakup_phone" class="contact-social-btn" aria-label="TikTok" target="_blank" rel="noopener">
+            <!-- TikTok SVG Icon -->
+            <svg width="20" height="20" viewBox="0 0 48 48" fill="none">
+              <g>
+                <path d="M33.5 8.5c.5 3.5 3.1 6.1 6.5 6.5v5.1c-2.1.2-4.2-.2-6.2-1.1v13.7c0 7.2-5.8 13-13 13s-13-5.8-13-13 5.8-13 13-13c.7 0 1.4.1 2.1.2v5.2c-.7-.2-1.4-.3-2.1-.3-4.3 0-7.8 3.5-7.8 7.8s3.5 7.8 7.8 7.8 7.8-3.5 7.8-7.8V4.5h5.1z" fill="#222"/>
+              </g>
+            </svg>
           </a>
         </div>
       </div>
@@ -1305,6 +1400,8 @@
         <a href="#">איך זה עובד</a>
         <a href="#">הזמנה</a>
         <a href="#">צור קשר</a>
+        <a href="#" id="terms-link">תנאי שימוש</a>
+        <a href="#" id="privacy-link">מדיניות פרטיות</a>
       </nav>
       <div class="footer-brand">
         <div class="footer-brand-title">
@@ -1316,10 +1413,58 @@
         <div class="footer-brand-desc">תא טלפון מעוצב לאירועים וחתונות</div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© 2025 SPEAK UP. כל הזכויות שמורות.</span>
+    <div class="footer-bottom" style="text-align:center; font-size:0.95rem; color:#d2d2d2; padding-bottom:24px;">
+      <span>
+        © 2025 SPEAK UP. כל הזכויות שמורות.<br>
+        <a href="#" id="terms-link-bottom" style="color:#d2d2d2; text-decoration:underline; margin:0 8px;">תנאי שימוש</a> |
+        <a href="#" id="privacy-link-bottom" style="color:#d2d2d2; text-decoration:underline; margin:0 8px;">מדיניות פרטיות</a>
+        <br>
+        האתר פועל בהתאם להוראות הדין בישראל. המידע באתר אינו מהווה ייעוץ משפטי או תחליף לייעוץ מקצועי. השימוש באתר כפוף לתנאי השימוש ומדיניות הפרטיות.
+      </span>
     </div>
   </footer>
+
+  <!-- תנאי שימוש Modal -->
+  <div id="terms-modal" style="display:none; position:fixed; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#fff; color:#222; max-width:420px; width:90vw; margin:auto; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:32px 22px 18px 22px; position:relative; font-family:inherit;">
+      <button onclick="document.getElementById('terms-modal').style.display='none'" style="position:absolute; left:16px; top:12px; background:none; border:none; font-size:1.5rem; color:#888; cursor:pointer;">×</button>
+      <h2 style="margin-top:0; font-size:1.25rem; font-weight:800; text-align:center;">תנאי שימוש</h2>
+      <div style="font-size:1.05rem; text-align:right; direction:rtl;">
+        <p>ברוכים הבאים לאתר SPEAK UP – תא טלפון מעוצב לאירועים וחתונות.<br>
+        השימוש באתר זה כפוף לתנאים הבאים. אנא קרא בעיון:</p>
+        <ol style="padding-right:18px;">
+          <li>המידע באתר נועד לצרכי מידע כללי בלבד ואינו מהווה ייעוץ מקצועי או התחייבות מצד החברה.</li>
+          <li>כל שימוש במידע, קבצים, תמונות או כל תוכן אחר שבאתר הוא באחריות המשתמש בלבד.</li>
+          <li>אין להעתיק, לשכפל, להפיץ או לפרסם תוכן מהאתר ללא אישור מפורש ובכתב מ־SPEAK UP.</li>
+          <li>החברה שומרת לעצמה את הזכות לעדכן את תנאי השימוש בכל עת וללא התראה מראש.</li>
+          <li>כל הזמנה לשירותים תיחשב כמחייבת רק לאחר אישור סופי מהחברה וחתימה על הסכם התקשרות אם נדרש.</li>
+          <li>בשימוש באתר אתה מצהיר כי קראת, הבנת והסכמת לתנאים אלו.</li>
+          <li>לכל שאלה ניתן לפנות אלינו בטופס יצירת הקשר או בוואטסאפ.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <!-- מדיניות פרטיות Modal -->
+  <div id="privacy-modal" style="display:none; position:fixed; top:0; right:0; bottom:0; left:0; background:rgba(0,0,0,0.45); z-index:9999; align-items:center; justify-content:center;">
+    <div style="background:#fff; color:#222; max-width:420px; width:90vw; margin:auto; border-radius:14px; box-shadow:0 8px 32px rgba(0,0,0,0.18); padding:32px 22px 18px 22px; position:relative; font-family:inherit;">
+      <button onclick="document.getElementById('privacy-modal').style.display='none'" style="position:absolute; left:16px; top:12px; background:none; border:none; font-size:1.5rem; color:#888; cursor:pointer;">×</button>
+      <h2 style="margin-top:0; font-size:1.25rem; font-weight:800; text-align:center;">מדיניות פרטיות</h2>
+      <div style="font-size:1.05rem; text-align:right; direction:rtl;">
+        <p>הפרטיות שלך חשובה לנו. להלן עקרונות מדיניות הפרטיות של האתר:</p>
+        <ol style="padding-right:18px;">
+          <li>בעת יצירת קשר באמצעות טופס באתר, נאספים פרטים כגון שם, טלפון ודוא"ל לצורך טיפול בפנייה בלבד.</li>
+          <li>המידע לא יועבר לצדדים שלישיים אלא אם כן נידרש לכך על פי חוק.</li>
+          <li>ייתכן והשימוש באתר כולל קובצי "עוגיות" (Cookies) לצרכי אבטחה, סטטיסטיקה ושיפור חוויית המשתמש.</li>
+          <li>אתה רשאי לבקש לעיין, לתקן או למחוק את פרטיך האישיים בכל עת באמצעות פנייה אלינו.</li>
+          <li>האתר מאובטח באמצעים מקובלים, אך השימוש בו נעשה באחריות המשתמש בלבד.</li>
+          <li>המשך שימוש באתר מהווה הסכמה למדיניות זו.</li>
+          <li>למידע נוסף – ניתן ליצור קשר עם הנהלת האתר.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
   <script>
     // קרוסלת ביקורות עם מעבר חלק
     const testimonials = [
@@ -1445,7 +1590,7 @@
       var list = document.getElementById('faq-list');
       var items = list.querySelectorAll('.faq-item');
       var answers = list.querySelectorAll('.faq-answer');
-      for (let i = 0; i < items.length; i++) {
+      for (let i = 0; i <i < items.length; i++) {
         if (i === idx) {
           const isOpen = items[i].classList.contains('open');
           // Toggle current
@@ -1491,6 +1636,43 @@
         });
       }
     });
+
+    // תנאי שימוש modal open logic
+    function openTermsModal(e) {
+      e.preventDefault();
+      document.getElementById('terms-modal').style.display = 'flex';
+    }
+    document.getElementById('terms-link').onclick = openTermsModal;
+    document.getElementById('terms-link-bottom').onclick = openTermsModal;
+
+    // מדיניות פרטיות modal open logic
+    function openPrivacyModal(e) {
+      e.preventDefault();
+      document.getElementById('privacy-modal').style.display = 'flex';
+    }
+    document.getElementById('privacy-link').onclick = openPrivacyModal;
+    document.getElementById('privacy-link-bottom').onclick = openPrivacyModal;
+
+    function openEventDateCalendar() {
+      var input = document.getElementById('event-date-input');
+      input.type = 'date';
+      input.focus();
+    }
+
+    // Format yyyy-mm-dd to dd/mm/yyyy on blur (Israeli format)
+    function formatDateToDDMMYYYY(val) {
+      if (!val) return '';
+      if (/^\d{4}-\d{2}-\d{2}$/.test(val)) {
+        const [y, m, d] = val.split('-');
+        return `${d}/${m}/${y}`;
+      }
+      if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(val)) {
+        const [a, b, c] = val.split('/');
+        if (parseInt(a,10) > 12) return val;
+        if (parseInt(b,10) > 12) return `${b}/${a}/${c}`;
+      }
+      return val;
+    }
   </script>
 </body>
 </html>
