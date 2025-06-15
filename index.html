@@ -9,6 +9,25 @@
   <!-- AOS CSS for scroll animations -->
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
+  @media (max-width: 768px) {
+    .hero {
+      height: 100vh;
+      padding: 0;
+    }
+    .content {
+      width: 100%;
+      padding: 0 12px;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .title {
+      font-size: 2.2rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+      padding: 8px 16px;
+    }
+  }
     html {
       scroll-behavior: smooth;
     }
@@ -47,13 +66,18 @@
       background: rgba(255,255,255,0.22); /* עמעום לבן בינוני */
       z-index: 1;
     }
-    .content {
-      position: relative;
-      z-index: 2;
-      color: #fff;
-      text-align: center;
-      max-width: 800px;
-      margin: 0 20px;
+  .content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    }
+
     }
     .subtitle {
       font-size: 1.35rem;
