@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, Instagram, Facebook } from 'lucide-react';
-import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
