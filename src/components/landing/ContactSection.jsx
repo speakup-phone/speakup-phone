@@ -4,6 +4,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Phone, Mail, Instagram, Facebook } from 'lucide-react';
+import React, { useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -32,9 +34,9 @@ export default function ContactSection() {
             await Lead.create(formData);
             
             // Send email using EmailJS
-            if (window.emailjs) {
-                await window.emailjs.sendForm('service_fs7b0ez', 'template_o7bn0ks', formRef.current);
-            }
+            emailjs.sendForm('service_fs7b0ez', 'template_o7bn0ks', formRef.current, {
+            publicKey: 'JrCuWvCbacKv_fLrW',
+          })
             
             setSubmitMessage('ההודעה נשלחה בהצלחה! ניצור קשר בהקדם.');
             setFormData({ fullName: '', phone: '', email: '', eventDate: '', message: 'איך נוכל לעזור לכם?' });
