@@ -8,10 +8,10 @@ import emailjs from '@emailjs/browser';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
-        fullName: '',
-        phone: '',
-        email: '',
-        eventDate: '',
+        user_name: '',
+        user_phone: '',
+        user_email: '',
+        event_date: '',
         message: 'איך נוכל לעזור לכם?'
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -38,7 +38,7 @@ export default function ContactSection() {
           })
             
             setSubmitMessage('ההודעה נשלחה בהצלחה! ניצור קשר בהקדם.');
-            setFormData({ fullName: '', phone: '', email: '', eventDate: '', message: 'איך נוכל לעזור לכם?' });
+            setFormData({ user_name: '', user_phone: '', user_email: '', event_date: '', message: 'איך נוכל לעזור לכם?' });
         } catch (error) {
             setSubmitMessage('אירעה שגיאה. אנא נסו שוב.');
             console.error(error);
@@ -101,19 +101,19 @@ export default function ContactSection() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
                                 <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">שם מלא</label>
-                                <Input id="fullName" name="fullName" value={formData.fullName} onChange={handleChange} placeholder="השם שלך" required />
+                                <Input id="fullName" name="fullName" value={formData.user_name} onChange={handleChange} placeholder="השם שלך" required />
                             </div>
                             <div>
                                 <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">טלפון שלך</label>
-                                <Input id="phone" name="phone" value={formData.phone} onChange={handleChange} placeholder="הטלפון שלך" required />
+                                <Input id="phone" name="phone" value={formData.user_phone} onChange={handleChange} placeholder="הטלפון שלך" required />
                             </div>
                             <div>
                                 <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">אימייל</label>
-                                <Input id="email" name="email" type="email" value={formData.email} onChange={handleChange} placeholder="האימייל שלך" required />
+                                <Input id="email" name="email" type="email" value={formData.user_email} onChange={handleChange} placeholder="האימייל שלך" required />
                             </div>
                             <div>
                                 <label htmlFor="eventDate" className="block text-sm font-medium text-gray-700 mb-1">תאריך האירוע (אם ידוע)</label>
-                                <Input id="eventDate" name="eventDate" type="date" value={formData.eventDate} onChange={handleChange} />
+                                <Input id="eventDate" name="eventDate" type="date" value={formData.event_date} onChange={handleChange} />
                             </div>
                         </div>
                         <div className="mb-6">
